@@ -3,9 +3,10 @@ void setup(){
 }
 
 void loop(){
-    PORTD = 0X02;
+    PORTD |= 0X02;
     for (int i = 0; i < 4; i++) {
         PORTD<<1;
         delay(500);
     }
+    PORTD &= 0xF0;
 }
