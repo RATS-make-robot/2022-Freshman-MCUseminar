@@ -5,7 +5,7 @@
 * DDRx : 입출력 설정
 * PORTx : HIGH / LOW 설정
 * PINx : 값 입력4
-* ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/blob/main/assets\2022-06-20-01-50-10.png)
+* ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/blob/main/assets/2022-06-20-01-50-10.png)
 * 아두이노 내장 LED는 PB5이다.
 * 그럼 얘를 제어할려면?
 * ```ino
