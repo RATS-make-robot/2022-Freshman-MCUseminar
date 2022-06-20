@@ -1,4 +1,4 @@
-void setup(){
+void setup(){ //328 레지스터로 변경
     DDRB = 0xFF;  // OC0(PB4)출력설정-> 변경필요
     TCCR0 = 0b01111010;    // fast PWM mode : 3,6(WGM01,00) - 11, 5,4(COM ) - 11, 2-0(CS) - 010
 }

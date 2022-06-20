@@ -7,7 +7,7 @@ void setup() {
     OCR0A= 255; 
 
     TCCR0A |= 0x00; //TCCR0A initialize
-    TCCR0B |= (1<<WGM02);
+    TCCR0B |= (1<<WGM02);   //16진수 떄려박기로 변경
     TCCR0B |= (1<<CS02) | (0<<CS00);
     TIMSK0 |= (1<<OCIE0A);
 
@@ -17,7 +17,7 @@ void setup() {
 ISR(TIMER0_COMPA_vect){ //나중에 레지스터 레벨로 변경 바람
     count++;
     if(count > 250) {
-        if (toggle0){ 
+        if (toggle0){   
             digitalWrite(13,HIGH);
             toggle0 = 0;
         }
