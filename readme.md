@@ -151,15 +151,13 @@
   * 반전 비교 출력모드(세번째 그림)일 경우에는
   * LOW가 출력되다가, 비교 매치에서 OCn핀에 1이 출력됩니다. TCNTn이 0xFF에서 0x00으로 떨어질 때 다시 LOW가 출력됩니다.
   * https://m.blog.naver.com/ga1267/220079623919 참고
-
-* ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/blob/main/assets/2022-06-20-04-01-14.png)
 * 사용해야할 레지스터는 아래와 같음
 * TCNT/OCR/TCCR
 * TIM이랑 거의 비슷함
 * TCCRA~B
+  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/blob/main/assets/2022-06-25-01-00-59.png)
   * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/blob/main/assets/2022-06-20-03-38-49.png)
   * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/blob/main/assets/2022-06-20-03-40-40.png)
-  * 솔직히 얘는 데이터시트보다 아래표가 더 잘 정리되어있음ㅋㅋ
   * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/blob/main/assets/2022-06-20-03-03-50.png)
 
 * TCNT / OCR
