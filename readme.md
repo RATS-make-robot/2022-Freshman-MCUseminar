@@ -151,20 +151,6 @@
   * 반전 비교 출력모드(세번째 그림)일 경우에는
   * LOW가 출력되다가, 비교 매치에서 OCn핀에 1이 출력됩니다. TCNTn이 0xFF에서 0x00으로 떨어질 때 다시 LOW가 출력됩니다.
   * https://m.blog.naver.com/ga1267/220079623919 참고
-  
-* Phase Correct PWM
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/blob/main/assets/2022-06-20-04-03-08.png)
-  * TCNTn은 역시 0x00~0xFF로 갔다가 다시 0x00으로 감소합니다. 뚝 떨어지지는 않구요.
-  * 역시 OCRn값을 맞춰두고,
-  * 비반전 출력 모드에서는
-  * 업 카운트 중에(TCNTn값이 상승할 때) TCNTn=OCRn일 때 OCn핀에 0이 출력됩니다. 다운 카운트 중에 일치하면 1이 출력되고요.
-  * 반전 출력 모드에서는, 사실 비반전의 반대인데(..)
-  * 업 카운트 중에 TCNTn = OCRn이면 OCn핀에 1, 다운 카운트 중에 일치하면 0이 출력됩니다
-  * Fast PWM과 Phase Correct PWM의 차이..는 검색해보니 
-  * Fast PWM : 높은 주파수 PWM
-  * Phase Correct PWM : 높은 분해능 PWM
-  * 간략하게 이렇다는군요. ..사실 잘 몰르겠습니다.
-  * https://m.blog.naver.com/ga1267/220079623919 참고
 
 * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/blob/main/assets/2022-06-20-04-01-14.png)
 * 사용해야할 레지스터는 아래와 같음
