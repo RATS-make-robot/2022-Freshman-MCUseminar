@@ -1,3 +1,4 @@
+#define LED_BUILTIN 13
 unsigned int count=0;
 char toggle0=1;
 
@@ -14,16 +15,16 @@ void setup() {
     sei(); //전역 인터럽트 활성
 }
 
-ISR(TIMER0_COMPA_vect){ //나중에 레지스터 레벨로 변경 바람
+ISR(TIMER0_COMPA_vect){
     count++;
     if(count > 250) {
         if (toggle0){   
-            digitalWrite(13,HIGH);
+            digitalWrite(LED_BUILTIN,HIGH);
             toggle0 = 0;
         }
 
         else{
-            digitalWrite(13,LOW);
+            digitalWrite(LED_BUILTIN,LOW);
             toggle0 = 1;
         }
         count=0;
