@@ -6,20 +6,20 @@ void setup(){ //328 레지스터로 변경
 }
 
 void loop(){
-    OCR2A = 180;
-    OCR2B = 50;
+    OCR0A = 180; //maybe pin 9 
+    OCR0B = 50;  //maybe pin 5 
     delay_ms(500);
-    OCR2A = 180;
-    OCR2B = 50;
+    OCR0A = 180;
+    OCR0B = 50;
     delay_ms(500);
-    OCR2A = 180;
-    OCR2B = 50;
+    OCR0A = 180;
+    OCR0B = 50;
     delay_ms(500);
-    OCR2A = 180;
-    OCR2B = 50;
+    OCR0A = 180;
+    OCR0B = 50;
     delay_ms(500);
-    OCR2A = 180;
-    OCR2B = 50;
+    OCR0A = 180;
+    OCR0B = 50;
     delay_ms(500);
 }
 
