@@ -8,7 +8,7 @@ void setup() {
 
     TCCR0A |= 0x00; //TCCR0A initialize
     TCCR0B |= (1<<WGM02);   //16진수 떄려박기로 변경
-    TCCR0B |= (1<<CS02) | (0<<CS00);
+    TCCR0B |= (1<<CS02) | (0<<CS00); //256
     TIMSK0 |= (1<<OCIE0A);
 
     sei(); //전역 인터럽트 활성

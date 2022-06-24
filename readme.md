@@ -1,5 +1,7 @@
 # 2022 RATS 신입생 MCU 세미나
 * Work sheet origin
+# Aduino 공식 doc
+* [PWM](https://docs.arduino.cc/tutorials/generic/secrets-of-arduino-pwm).
 # GPIO
 * 아트메가에서 GPIO를 변경할려면 아래의 레지스터를 제어해야한다.
 * DDRx : 입출력 설정
@@ -132,4 +134,27 @@
   * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/blob/main/assets/2022-06-20-03-37-45.png)
   * TCNT가 결국 클럭이 몇개 지나갔는지 카운트 되는 레지스터 ㅇㅇ
   * OCR은 타겟 벨류 ㅇㅇ
-* 
+* ```ino
+    //레지스터 레벨에서 접근
+    pinMode(3, OUTPUT);
+    pinMode(11, OUTPUT);
+    TCCR2A = _BV(COM2A1) | _BV(COM2B1) | _BV(WGM21) | _BV(WGM20);
+    TCCR2B = _BV(CS22);
+    OCR2A = 180;
+    OCR2B = 50;
+    /*
+      Output A frequency: 16 MHz / 64 / 256 = 976.5625Hz
+      Output A duty cycle: (180+1) / 256 = 70.7%
+      Output B frequency: 16 MHz / 64 / 256 = 976.5625Hz
+      Output B duty cycle: (50+1) / 256 = 19.9%
+    */
+  ```
+* |Timer output|Arduino output|Chip pin|Pin name|
+  |------------|--------------|--------|--------|
+  |OC0A        |9             |12      |PD6     |
+  |OC0B        |5             |11      |PD5     |
+  |OC1A        |9             |15      |PB1     |
+  |OC1B        |10            |16      |PB2     |
+  |OC2A        |11            |17      |PB3     |
+  |OC2B        |3             |5       |PD3     |
+* [PWM REF](https://docs.arduino.cc/tutorials/generic/secrets-of-arduino-pwm).
