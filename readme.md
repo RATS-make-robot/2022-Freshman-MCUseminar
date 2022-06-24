@@ -52,7 +52,31 @@
   * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/blob/main/assets/2022-06-20-01-59-54.png)
   * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/blob/main/assets/2022-06-20-02-02-45.png)
 * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/blob/main/assets/2022-06-20-02-14-50.png)
+  
+* ```ino
+  void init_adc(){
+      ADCSRA |= 0x07; //분주비 128
+      ADMUX  |= 0x40; //ADC AVCC(5V) 기준 
+      ADCSRA |= 0x80; //ADC Conversion start
+  }
 
+  uint16_t read_adc(unsigned char channel){
+      uint8_t adc_L, adc_H;
+      uint16_t ADC;
+      ADMUX &= 0xF0;          //ADMUX 0~3 bit 초기화 MUX 채널 셋팅
+      ADMUX |= channel;
+      ADCSRA |= 0x80;         //ADC Conversion start
+      while(ADCSRA & 0x80);	//변환 ㄱㄷ
+      /*
+      ADSC: ADC Start Conversion
+      When the conversion is complete, it returns to zero.
+      */
+      adc_L = ADCL;
+      adc_H = ADCH;
+      ADC = (adc_H<<8) | adc_L;
+      return ADC;	//ADC값 반환
+  }
+  ```
 # TIM
 * 외부 인터럽트는 애들 보드로 설명하기 솔직히 애매함
 * 걍 인터럽트 개념 설명하고 내부 외부가 있다~ 외부는 이렇고~ 내부는 이렇다~ 한뒤에
@@ -85,7 +109,17 @@
   * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/blob/main/assets/2022-06-20-03-36-59.png)
   * OCIE0A를 설정했기 때문에 아래의 INT가 발생한거임 ㅇㅇ
   * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/blob/main/assets/2022-06-20-03-45-06.png)
+* ```ino
+    TCNT0 = 0;  //TCNT0 initialize
+    OCR0A= 255; 
 
+    TCCR0A |= 0x00; //TCCR0A initialize
+    TCCR0B |= (1<<WGM02);   //16진수 떄려박기로 변경
+    TCCR0B |= (1<<CS02) | (0<<CS00); //256
+    TIMSK0 |= (1<<OCIE0A);
+
+    sei(); //전역 인터럽트 활성
+  ```
 # PWM
 * 뭐 사실 PWM이랑 TIM랑 개똑같은거 설명 ㄲㄱ
 * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/blob/main/assets/2022-06-20-03-55-53.png)
