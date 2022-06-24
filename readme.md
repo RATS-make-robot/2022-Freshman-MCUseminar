@@ -158,7 +158,6 @@
   * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/blob/main/assets/2022-06-25-01-00-59.png)
   * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/blob/main/assets/2022-06-20-03-38-49.png)
   * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/blob/main/assets/2022-06-20-03-40-40.png)
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/blob/main/assets/2022-06-20-03-03-50.png)
 
 * TCNT / OCR
   * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/blob/main/assets/2022-06-20-03-37-45.png)
