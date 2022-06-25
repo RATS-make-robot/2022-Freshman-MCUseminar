@@ -92,25 +92,13 @@
   * ![](assets/2022-06-20-01-59-29.png)
   * ![](assets/2022-06-20-01-59-39.png)
     * 결국 아래의 bit가 중요
-    * ADPS0~2 : ADC에 공급할 클럭 설정을 위한 프리스케일러
-    * ADEN : ADC Enable
-    * ADCS : ADC start conversion
+      * ADEN : ADC Enable
+      * ADSC : ADC start conversion
 * ADCH/ADCL
   * ![](assets/2022-06-20-01-59-54.png)
   * ![](assets/2022-06-20-02-02-45.png)
-  * |Frescaler|Value(ADRS2~0)|
-    |---------|-----|
-    |2        |000  |
-    |2        |001  |
-    |4        |010  |
-    |8        |011  |
-    |16       |100  |
-    |32       |101  |
-    |64       |110  |
-    |128      |111  |
-
+* **Code**
 * ![](assets/2022-06-20-02-14-50.png)
-  
 * ```ino
   void setup() {
     Serial.begin(9600);
