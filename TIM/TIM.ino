@@ -1,39 +1,28 @@
-#define LED_BUILTIN 13
-unsigned int count=0;
-char toggle0=1;
-
-void setup() {
+  bool LED_STATE = true;
+  unsigned int count = 0;
+    
+  void setup() {
     pinMode(13, OUTPUT);
-    TCNT0 = 0;  //TCNT0 initialize
-    OCR0A= 255; 
+    cli();                      //전역인터럽트 정지
 
-    TCCR0A |= 0x00; //TCCR0A initialize
-    TCCR0B |= (1<<WGM02);   //16진수 떄려박기로 변경
-    TCCR0B |= (1<<CS02) | (0<<CS00); //256
-    TIMSK0 |= (1<<OCIE0A);
+    TCCR0A = 0x0;                 // Reset entire TCCR1A to 0 
+    TCCR0B = 0x00;                 // Reset entire TCCR1B to 0
+    //일반 모드로 설정
 
-    sei(); //전역 인터럽트 활성
-}
+    TCCR0B |= _BV(CS02)|_BV(CS00);        //프리스케일러 셋팅
 
-ISR(TIMER0_COMPA_vect){
-    count++;
-    if(count > 250) {
-        if (toggle0){   
-            digitalWrite(LED_BUILTIN,HIGH);
-            toggle0 = 0;
-        }
+    TIMSK0 |= _BV(OCIE0A);        //compare match A 인터럽트
 
-        else{
-            digitalWrite(LED_BUILTIN,LOW);
-            toggle0 = 1;
-        }
-        count=0;
-        TCNT0=0;
-    }
-}
-
-void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-//https://diyver.tistory.com/140 참고
+    OCR0A = 255;                //타켓 벨류
+    sei();                     //전역 인터럽트 설정
+  }
+  
+  void loop() {
+    // put your main code here, to run repeatedly:
+  }
+  
+  ISR(TIMER0_COMPA_vect){
+    TCNT0  = 0;                  //TCNT랑 ocr이랑 체크하니깐 tcnt 초기화
+    LED_STATE = !LED_STATE;      //Invert LED state
+    digitalWrite(13,LED_STATE);  //Write new state to the LED on pin D5
+  }
