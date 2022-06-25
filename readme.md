@@ -94,7 +94,7 @@
 * 걍 인터럽트 개념 설명하고 내부 외부가 있다~ 외부는 이렇고~ 내부는 이렇다~ 한뒤에
 * 코드는 내부만 ㄲㄲ
 * 일단 타이머가 8bit TIM 그리고 16bit TIM가 있음
-* 8bit tim은 0~255 / 16bit time 0~65536
+* 8bit tim은 0-255 / 16bit tim 0-65536
 * 우린 8-bit T/C TIM0 쓰자
 * TIM 모드는 몇개가 있는데 아래 이미지 참고 ㄲㄱ
 * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/blob/main/assets/2022-06-20-03-03-50.png)
