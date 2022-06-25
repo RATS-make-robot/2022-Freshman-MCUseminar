@@ -259,9 +259,11 @@
     * DMM의 처리 속도가 빠르지 않기 때문.
       *  Flukemeter 87V의 ADC만 해도 60Hz정도가 한계.
     * ![](assets/2022-06-26-01-48-32.png)
-    * 대부분의) DMM은 입력단에 위처럼 Low-pass filter를 사용(C18 부분).
-    * 따라서 (대부분의 DMM은) AC모드가 아닌한, Vpp대신 평균 전압이 측정. 
-    * 만약 실제로 전압이 아날로그하게 바뀐다면, PWM파형 뒷부분에 Resistor-Capacitor 필터를 달아줘 디지털 파형이 아날로그 전압으로 바꾼것.
+    * (대부분의 DMM)은 입력단에 위처럼 Low-pass filter를 사용(C18 부분) -> Analog 신호화.
+    * (대부분의 DMM은) AC모드가 아닌한, Vpp대신 평균 전압이 측정.
+      * 평균전압은 DMM쪽 회로에 결정됨.
+      * 다만, 대부분의 DMM은 Sampling frq(끽해야 60Hz)내의 신호 흔들림은 산술평균을 냄
+    * 만약 실제로 출력 전압이 아날로그하게 바뀐다면, PWM파형 뒷부분에 Resistor-Capacitor 필터를 달아줘 디지털 파형이 아날로그 전압으로 바꾼것.
       * ![](assets/2022-06-26-01-51-04.png)
 ## REG LEVEL
 * |Timer output|Arduino output|Chip pin|Pin name|
