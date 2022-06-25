@@ -14,11 +14,11 @@
     * 그리고 reg의 집합이 메모리임...그래서 포인터하고 fseek 같은 함수가 중요한 것 ㅇㅇ
 
 # GPIO (General Purpose Input/Output)
-* ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-26-00-45-46.png)
+* ![](assets/2022-06-26-00-45-46.png)
 * 말그대로 표준 '입출력' 장치
 * 핀명과 병기된 내용은 사용가능한 Altenative function
 * 입력
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-26-00-54-10.png)
+  * ![](assets/2022-06-26-00-54-10.png)
   * 1.5V 이하의 신호는 LOW
   * 3V 이상의 신호는 HIGH
   * 중간을 비워두는 것은 노이즈 방지를 위함
@@ -26,16 +26,16 @@
   * HIGH는 5V
   * LOW는 0V
 * 어떻게 한 PIN으로 입출력이 가능한가?
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-26-00-55-20.png)
+  * ![](assets/2022-06-26-00-55-20.png)
   * 위와 같은 Tri-state Buffer를 이용하여 아래의 회로를 구성한다
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-26-00-55-58.png)
+  * ![](assets/2022-06-26-00-55-58.png)
   * 즉, Buffer에 적당한 값을 넣어 입출력모드를 설정할 수 있다.
 ## Register Level
 * 아트메가에서 GPIO를 변경할려면 아래의 레지스터를 제어해야한다.
 * DDRx : 입출력 설정
 * PORTx : 출력 HIGH / LOW 설정
 * PINx : 값 입력4
-* ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-20-01-50-10.png)
+* ![](assets/2022-06-20-01-50-10.png)
 * 아두이노 내장 LED는 PB5이다.
 * 그럼 얘를 제어할려면?
 * ```ino
@@ -64,41 +64,41 @@
   ```
 # ADC (Analog Digital Converter)
 * Analog?
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-26-00-58-43.png)
+  * ![](assets/2022-06-26-00-58-43.png)
   * 어떠한 수치가 연속적으로 변하는 물리량으로 나타나는 것
   * 아날로그 형태인 신호를 아날로그 신호라 함
   * 자연에서 얻는 신호는 전부 아날로그 신호
 * Digital?
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-26-00-59-26.png)
+  * ![](assets/2022-06-26-00-59-26.png)
   * 어떠한 수치가 특정 최소 단위를 가지는 단위로 나타내는 것
   * 디지털 형태인 신호를 디지털 신호
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-26-00-59-38.png)
+  * ![](assets/2022-06-26-00-59-38.png)
 * Analog Digital Converter?
   * 아날로그 신호를 디지털 신호로 변환하는 전자 회로
   * 센서로 받는 아날로그 신호를 MCU에서 사용 할 수 있도록 함
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-26-01-07-28.png)
+  * ![](assets/2022-06-26-01-07-28.png)
   * **Sampling Theory**
     * 할지 말지 고민중임.
 ## Register Level
 * ATmega의 ADC회로부 모습이다
-* ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-20-01-56-06.png)
+* ![](assets/2022-06-20-01-56-06.png)
 * 아트메가에서 ADC를 수행할려면 아래의 레지스터를 제어해야한다.
 * ADMUX
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-20-01-58-28.png)
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-20-02-01-01.png)
+  * ![](assets/2022-06-20-01-58-28.png)
+  * ![](assets/2022-06-20-02-01-01.png)
   * 우리는 5V 기준을 잡는다.
-    * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-20-02-24-23.png)
+    * ![](assets/2022-06-20-02-24-23.png)
     * AVCC가 5V이기에 AVCC를 레퍼런스로
 * ADCSRA
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-20-01-59-29.png)
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-20-01-59-39.png)
+  * ![](assets/2022-06-20-01-59-29.png)
+  * ![](assets/2022-06-20-01-59-39.png)
     * 결국 아래의 bit가 중요
     * ADPS0~2 : ADC에 공급할 클럭 설정을 위한 프리스케일러
     * ADEN : ADC Enable
     * ADCS : ADC start conversion
 * ADCH/ADCL
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-20-01-59-54.png)
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-20-02-02-45.png)
+  * ![](assets/2022-06-20-01-59-54.png)
+  * ![](assets/2022-06-20-02-02-45.png)
   * |Frescaler|Value(ADRS2~0)|
     |---------|-----|
     |2        |000  |
@@ -110,7 +110,7 @@
     |64       |110  |
     |128      |111  |
 
-* ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-20-02-14-50.png)
+* ![](assets/2022-06-20-02-14-50.png)
   
 * ```ino
   void setup() {
@@ -150,7 +150,7 @@
 # Folling
 * 내용을 채워주세요...
 # INTERRUPT
-* ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-26-01-10-30.png)
+* ![](assets/2022-06-26-01-10-30.png)
 * 위 상황에서는 PC게임 중이 loop함수
 * 위 상황에서는 친구와 영화를 보는 것이 ISR 함수
 * INT 처리 순서
@@ -161,17 +161,17 @@
   5. loop() 함수 계속 실행
 * 만약 동시에 INT가 발생한다면?
   * 당연히 우선순위가 존재한다.
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-26-01-13-37.png)
+  * ![](assets/2022-06-26-01-13-37.png)
   * 이를 IRQ 벡터 테이블이라고 한다.
 * **External Interrupt**
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-26-01-15-52.png)
+  * ![](assets/2022-06-26-01-15-52.png)
   * 외부인터럽트란 외부신호에 따라 인터럽트 발생
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-26-01-19-02.png)
+  * ![](assets/2022-06-26-01-19-02.png)
   * 아두이노 D2와 D3핀을 이용하면 사용할 수 있다
   * 이번 세미나에서는 실습 생략
 * **Internal Interrupt**
   * 상기 언급한 외부인터럽트와 PCINTn를 제외하고는 내부 인터럽트
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-26-01-21-44.png)
+  * ![](assets/2022-06-26-01-21-44.png)
   * 예를 들어 Watch Dog TIM를 설명해보자
   * 시스템이 살아있는지 일정 시간 마다 chk하는 것이다.
     * 어떻게?
@@ -185,12 +185,12 @@
 * TIM는 CLK의 숫자를 CHK 하여 일정 시간이 지나면 INT를 발생!
   * INT가 발생되면 ISR함수를 실행.
   * 즉, 일정 주기마다 원하는 행위를 수행 가능.
-* ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-26-01-27-25.png)
+* ![](assets/2022-06-26-01-27-25.png)
 * 328에는 8bit TIM 그리고 16bit TIM가 있음
 * 8bit tim은 0-255 / 16bit tim 0-65536 : 이 숫자는 카운트하는 CLK의 갯수임.
 * 이번 실습때는 8-bit T/C TIM0 쓰자
 * TIM 모드는 몇개 있음
-* ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-20-03-03-50.png)
+* ![](assets/2022-06-20-03-03-50.png)
   * 결국에는 CLK가 들어갈떄마다 TCNTn이라는 REG의 숫자가 늘어남.
   * 일반모드
     * TCNTn이 0xFF를 넘어 OVF가 나면 INT가 발생함.
@@ -203,16 +203,16 @@
 * 상기 언급하였듯이 우린 CTC모드 쓸꺼임...
 * CTC모드가 뭐라면 클럭마다 TCNT가 한개씩 증가함,,,그러다가 OCR 또는 ICR이 일치하면 INT발생  
     -> 여기선 아래의 IRQ 벡터 ㅇㅇ
-* ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-20-03-45-06.png)
+* ![](assets/2022-06-20-03-45-06.png)
 * 왜하필 얘냐면 TIMSK0 떄문임 ㅇㅇ
 * 사용해야할 레지스터는 아래와 같음
   * TCCRA~B / TCNT / OCR / TIMSK
 * TCCRA~B
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-20-03-38-49.png)
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-20-03-40-40.png)
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-26-01-35-46.png)
+  * ![](assets/2022-06-20-03-38-49.png)
+  * ![](assets/2022-06-20-03-40-40.png)
+  * ![](assets/2022-06-26-01-35-46.png)
   * 솔직히 얘는 데이터시트보다 아래표가 더 잘 정리되어있음ㅋㅋ
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-20-03-03-50.png)
+  * ![](assets/2022-06-20-03-03-50.png)
     * CS00~02 REG는 Prescaler를 설정하는 것임.
     * 우리가 쓰는 보드의 CLK는 16MHz
     * 16MHz/OCRn 마다 INT가 발생하면 너무 자주 발생함.
@@ -222,14 +222,14 @@
   * 위 Table을 보고 적당히 CTC모드에 맞게 레지스터에 값을 써주자
 
 * TCNT / OCR
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-20-03-37-45.png)
+  * ![](assets/2022-06-20-03-37-45.png)
   * TCNT가 결국 클럭이 몇개 지나갔는지 카운트 되는 레지스터 ㅇㅇ
   * OCR은 타겟 벨류 ㅇㅇ
   * CTC모드에서는 결국 TCNT 랑 우리가 셋팅해준 OCR이 맞는지 chk 맞다면 인터럽트 발생
 * TIMSK
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-20-03-36-59.png)
+  * ![](assets/2022-06-20-03-36-59.png)
   * OCIE0A를 설정했기 때문에 아래의 INT가 발생한거임 ㅇㅇ
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-20-03-45-06.png)
+  * ![](assets/2022-06-20-03-45-06.png)
 * ```ino
     pinMode(13, OUTPUT);
     cli();                      //전역인터럽트 정지
@@ -250,7 +250,7 @@
 * LED의 밝기를 조절하기 위해서는 LED에 입력되는 전압을 조절해야함.
 * 하지만, 아두이노에는 DAC (Digital Analog Converter)가 없기에 진정한 Analog out은 불가능
 * 이를 파훼하기 위해 PWM이 등장
-* ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-26-01-40-47.png)
+* ![](assets/2022-06-26-01-40-47.png)
 * PWM은 제어 신호의 펄스 폭을 조절하는거임
 * 쉽게 말해 스위치를 켰다 껏다를 엄청 빠르게 실시  
   (스위치 ON = 1, 스위치 OFF = 0, 디지털 신호이다)
@@ -261,7 +261,7 @@
   * PWM은 일정 시간 동안 LOW 그 후 일정 시간동안 HIGH
   * 이것을 반복
   * 완전 TIM으로 구현 가능아님?
-* ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-26-01-42-13.png)
+* ![](assets/2022-06-26-01-42-13.png)
 * 보면 알겠지만 디지털 신호임. 혼동 ㄴㄴ
 * DMM을 찍어보면 아래와 같이 전압이 찍힘 -> 실제로 Vpp가 바뀌는 것은 아님.
   * 100% Duty Cycle : 5V (= 5V * 1)
@@ -272,11 +272,11 @@
   * **그럼 왜? DMM에는 저렇게 보이는가?**
     * DMM의 처리 속도가 빠르지 않기 때문.
       *  Flukemeter 87V의 ADC만 해도 60Hz정도가 한계.
-    * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-26-01-48-32.png)
+    * ![](assets/2022-06-26-01-48-32.png)
     * 대부분의) DMM은 입력단에 위처럼 Low-pass filter를 사용(C18 부분).
     * 따라서 (대부분의 DMM은) AC모드가 아닌한, Vpp대신 평균 전압이 측정. 
     * 만약 실제로 전압이 아날로그하게 바뀐다면, PWM파형 뒷부분에 Resistor-Capacitor 필터를 달아줘 디지털 파형이 아날로그 전압으로 바꾼것.
-      * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-26-01-51-04.png)
+      * ![](assets/2022-06-26-01-51-04.png)
 ## REG LEVEL
 * |Timer output|Arduino output|Chip pin|Pin name|
   |------------|--------------|--------|--------|
@@ -286,11 +286,11 @@
   |OC1B        |10            |16      |PB2     |
   |OC2A        |11            |17      |PB3     |
   |OC2B        |3             |5       |PD3     |
-* ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-26-02-04-00.png)
+* ![](assets/2022-06-26-02-04-00.png)
 * 우리 라트 3번 LED는 D5(=PD5)에 결선, 해당 포트는 OC0B(TIM 8BIT COUNTER 0)
 * 우선 PWM 모드는 2개가 있음 : 우린 걍 FAST PWM ㄲㄲ
 * FAST PWM
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-26-02-04-26.png)
+  * ![](assets/2022-06-26-02-04-26.png)
   * TCNTn은 여전히 냅두면 0x00~OCR까지 갔다가 오버플로우되는것을 반복
   * OCRn값과 TCNTn값이 일치하면(비교 매치) OCn핀의 출력값이 바뀜
   * 여기서 출력값이 어떻게 바뀌느냐는 모드마다 다름.
@@ -304,12 +304,12 @@
 * TCNT/OCR/TCCR
 * TIM이랑 거의 비슷함
 * TCCRA~B
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-25-01-00-59.png)
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-20-03-38-49.png)
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-20-03-40-40.png)
+  * ![](assets/2022-06-25-01-00-59.png)
+  * ![](assets/2022-06-20-03-38-49.png)
+  * ![](assets/2022-06-20-03-40-40.png)
 
 * TCNT / OCR
-  * ![](https://github.com/RATS-make-robot/2022-Freshman-MCUseminar/tree/main/assets/2022-06-20-03-37-45.png)
+  * ![](assets/2022-06-20-03-37-45.png)
   * TCNT가 결국 클럭이 몇개 지나갔는지 카운트 되는 레지스터 ㅇㅇ
   * OCR은 타겟 벨류 ㅇㅇ
 
