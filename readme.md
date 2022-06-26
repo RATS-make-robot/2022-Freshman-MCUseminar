@@ -186,6 +186,8 @@
     * OCR보다 TCNTn 이 커지면 OVF가 나면서 INT 발생
     * OCR로 주기를 조절가능함.
 ## REG LEVEL
+* ATmega의 TIM(PWM)회로부 모습이다
+* ![](assets/2022-06-26-14-26-40.png)
 * 상기 언급하였듯이 우린 CTC모드 쓸꺼임...
 * CTC모드가 뭐라면 클럭마다 TCNT가 한개씩 증가함,,,그러다가 OCR 또는 ICR이 일치하면 INT발생  
     -> 여기선 아래의 IRQ 벡터 ㅇㅇ
@@ -266,6 +268,8 @@
     * 만약 실제로 출력 전압이 아날로그하게 바뀐다면, PWM파형 뒷부분에 Resistor-Capacitor 필터를 달아줘 디지털 파형이 아날로그 전압으로 바꾼것.
       * ![](assets/2022-06-26-01-51-04.png)
 ## REG LEVEL
+* * ATmega의 TIM(PWM)회로부 모습이다
+* ![](assets/2022-06-26-14-26-40.png)
 * |Timer output|Arduino output|Chip pin|Pin name|
   |------------|--------------|--------|--------|
   |OC0A        |9             |12      |PD6     |
