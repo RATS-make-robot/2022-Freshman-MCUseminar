@@ -121,7 +121,7 @@
           7. Case.3에선 Aliasing 되어서 <fig.2>신호가 왜곡되는 것을 알 수 있다...
           8. 즉, 원본 신호보다 2배의 주기로 신호를 Sampling 해야한다.  
           이를 '**Nyquist theorem**'이라고 한다.
-          9.  신호를 아날로그로 복원할려면 이상적 LPF에 Convolution 하면된다.
+          9.  신호를 아날로그로 복원할려면 이상적 LPF에 Convolution 하고 푸리에 역변환하면 된다.
              * 하지만, 신호및시스템을 수강하지 않으면 이해하기 어려우기에 생략...
         * 이러한 내용은 디지털신호처리 과목에서 배움.
         * Sampling된 신호 Recover, UP/Down Sampling 궁금하면 세미나 준비해볼게여
